@@ -10,37 +10,53 @@
       font-family: 'Roboto', sans-serif;
       margin: 0;
       padding: 0;
-      background: #f5f5f5;
+      background: #f7f7f7;
       color: #333;
+      transition: background-color 0.3s ease;
     }
     header {
       background-color: #4CAF50;
       color: white;
       padding: 20px;
       text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
     }
     nav {
       background: #388E3C;
       display: flex;
       justify-content: center;
       gap: 30px;
-      padding: 10px 0;
+      padding: 15px 0;
     }
     nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #ffeb3b;
     }
     .container {
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 30px auto;
       padding: 0 20px;
     }
     .section {
       margin-bottom: 40px;
+      display: none;
+    }
+    .active {
+      display: block;
     }
     h2 {
       color: #4CAF50;
+      font-size: 2rem;
     }
     footer {
       text-align: center;
@@ -48,6 +64,52 @@
       color: white;
       padding: 20px;
       margin-top: 50px;
+    }
+    footer p {
+      margin: 0;
+    }
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      line-height: 1.8;
+    }
+    .testimonial {
+      background: #fff;
+      border-left: 5px solid #4CAF50;
+      padding: 15px;
+      margin: 20px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .testimonial:hover {
+      transform: translateX(10px);
+    }
+    .testimonial strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 1.1rem;
+    }
+    .icon {
+      font-size: 1.3rem;
+      margin-right: 10px;
+      color: #388E3C;
+    }
+    .contact-info {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .contact-info div {
+      flex: 1;
+    }
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .container {
+        padding: 0 10px;
+      }
     }
   </style>
 </head>
@@ -58,14 +120,14 @@
   </header>
 
   <nav>
-    <a href="#sobre">Sobre</a>
-    <a href="#servicos">Serviços</a>
-    <a href="#clientes">Clientes</a>
-    <a href="#contato">Contato</a>
+    <a onclick="showSection('sobre')">Sobre</a>
+    <a onclick="showSection('servicos')">Serviços</a>
+    <a onclick="showSection('avaliacoes')">Avaliações</a>
+    <a onclick="showSection('contato')">Contato</a>
   </nav>
 
   <div class="container">
-    <section id="sobre" class="section">
+    <section id="sobre" class="section active">
       <h2>Sobre a MaxNutri</h2>
       <p>A MaxNutri é uma consultoria especializada que combina nutrição, apoio psicológico e práticas de bem-estar. Nosso objetivo é promover saúde integral com soluções personalizadas para atletas, empresas e indivíduos em busca de equilíbrio.</p>
     </section>
@@ -73,29 +135,54 @@
     <section id="servicos" class="section">
       <h2>Serviços</h2>
       <ul>
-        <li>Consultoria Nutricional Personalizada</li>
-        <li>Acompanhamento Psicológico Esportivo</li>
-        <li>Treinamento Físico e Coaching de Bem-Estar</li>
-        <li>Consultoria Administrativa para Clubes e Academias</li>
-        <li>Plataforma Digital com Agendamentos e Monitoramento</li>
+        <li><span class="icon">🍏</span>Consultoria Nutricional Personalizada</li>
+        <li><span class="icon">🧠</span>Acompanhamento Psicológico Esportivo</li>
+        <li><span class="icon">🏋️‍♂️</span>Treinamento Físico e Coaching de Bem-Estar</li>
+        <li><span class="icon">🏢</span>Consultoria Administrativa para Clubes e Academias</li>
+        <li><span class="icon">📅</span>Plataforma Digital com Agendamentos e Monitoramento</li>
       </ul>
     </section>
 
-    <section id="clientes" class="section">
-      <h2>Clientes e Parcerias</h2>
-      <p>Atendemos atletas profissionais, empresas preocupadas com a saúde dos colaboradores, e clubes como a Chapecoense. Nosso foco é gerar resultados reais e sustentáveis.</p>
+    <section id="avaliacoes" class="section">
+      <h2>Avaliações dos Clientes</h2>
+      <div class="testimonial">
+        <strong>Maria Souza - Empresária</strong>
+        "Depois de um ano com a MaxNutri, me sinto renovada. O equilíbrio entre alimentação e mente fez toda a diferença."
+      </div>
+      <div class="testimonial">
+        <strong>João Carlos - Maratonista</strong>
+        "Ganhei mais energia e foco nas provas. A equipe é incrível e me acompanha de perto!"
+      </div>
+      <div class="testimonial">
+        <strong>Larissa Mendes - Estudante</strong>
+        "Melhorei minha alimentação e minha ansiedade. Hoje sou mais feliz e produtiva."
+      </div>
     </section>
 
     <section id="contato" class="section">
       <h2>Contato</h2>
-      <p>Rua Bem-Estar, 250, Jardim Saúde, São Paulo - SP</p>
-      <p>Email: contato@maxnutri.com</p>
-      <p>Telefone: (11) 1234-5678</p>
+      <div class="contact-info">
+        <div>
+          <p><strong>Endereço:</strong> Rua Bem-Estar, 250, Jardim Saúde, São Paulo - SP</p>
+          <p><strong>Email:</strong> contato@maxnutri.com</p>
+        </div>
+        <div>
+          <p><strong>Telefone:</strong> (11) 1234-5678</p>
+        </div>
+      </div>
     </section>
   </div>
 
   <footer>
     <p>&copy; 2025 MaxNutri - Todos os direitos reservados.</p>
   </footer>
+
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => section.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
 </body>
 </html>
